@@ -3,7 +3,7 @@ import { InMemoryUsersRepository } from "@/repositories/in-memory/in-memory-user
 import { AuthenticateUseCase } from "./authenticate";
 import { hash } from "bcryptjs";
 import { InvalidCredentialsError } from "./errors/invalid-credentials-error";
-import { beforeEach } from "node:test";
+import { beforeEach } from "vitest";
 
 // SUT Pattern = System Under Testing
 
@@ -16,9 +16,6 @@ describe("Authenticate Use Case", () => {
     sut = new AuthenticateUseCase(usersRepository);
   });
   it("should be able to authenticate", async () => {
-    const usersRepository = new InMemoryUsersRepository();
-    const sut = new AuthenticateUseCase(usersRepository);
-
     await usersRepository.create({
       name: "John Doe",
       email: "johndoe@example.com",
